@@ -68,7 +68,7 @@ public class LowComAnc
  
     public static void main(String[] args)
     {
-        LowComAnc tree = new LowComAnc();
+/*        LowComAnc tree = new LowComAnc();
         tree.root = new Node(1);
         tree.root.left = new Node(2);
         tree.root.right = new Node(3);
@@ -81,6 +81,6 @@ public class LowComAnc
         System.out.println("LCA(4, 6): " + tree.findLCA(4,6));
         System.out.println("LCA(3, 4): " + tree.findLCA(3,8));
         System.out.println("LCA(2, 4): " + tree.findLCA(2,4));
-        System.out.println("LCA(2, 4): " + tree.findLCA(6,7));
+        System.out.println("LCA(2, 4): " + tree.findLCA(6,7));*/
     }
 }

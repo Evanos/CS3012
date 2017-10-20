@@ -10,7 +10,7 @@ public class LowComAncTest {
 
 	@Test	
 	public void testFindLCA(){
-		LowComAnc tree = new LowComAnc();
+		LowComAnc tree = new LowComAnc(); 
 		//Testing empty tree, should return -1
 		assertEquals("Testing LCA on empty tree",-1, tree.findLCA(1, 2));
 		

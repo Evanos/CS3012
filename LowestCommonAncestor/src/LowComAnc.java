@@ -1,74 +1,57 @@
+import java.util.*;
 
- import java.util.ArrayList;
-import java.util.List;
+//source: https://www.youtube.com/watch?v=fjT3WDKiAkI
 
-//the source of this code is http://www.geeksforgeeks.org/lowest-common-ancestor-binary-tree-set-1/
-/*   New Branch created    */
- 
-class Node {
-    int data;
-    Node left, right;
- 
-    Node(int value) {
-        data = value;
-        left = right = null;
-    }
+class Graph{
+	class Edge{
+		int v,w;
+		public Edge(int v, int w){
+			this.v=v; this.w=w;
+		}
+		@Override
+		public String toString(){
+			return "(" + v +","+w+")";
+		}
+	}
+	List<Edge> g[];
+	public Graph(int n){
+		g=new LinkedList[n];
+		for(int i =0;i<g.length;i++){
+			g[i]=new LinkedList<Edge>();
+		}
+	}
+	boolean isConnected(int u, int v){
+		for(Edge i: g[u]){
+			if(i.v==v) return true;}
+			return false;
+	}
+	
+	void addEdge(int u ,int v, int w){
+		g[u].add(0, new Edge(v,w));
+	}
+	
+	@Override
+	public String toString(){
+		String result = "";
+		for(int i = 0 ; i < g.length;i++){
+			result+=i+"=>"+g[i] + "\n";
+		}
+		return result;
+			
+	}
 }
- 
-public class LowComAnc 
-{
-    Node root;
-    private List<Integer> path1 = new ArrayList<>();
-    private List<Integer> path2 = new ArrayList<>();
- 
-    int findLCA(int x, int y) {
-        path1.clear();
-        path2.clear();
-        return findLCAInternal(root, x, y);
-    }
- 
-    private int findLCAInternal(Node root, int x, int y) {
- 
-        if (!findPath(root, x, path1) || !findPath(root, y, path2)) {
-            return -1;
-        }
- 
-        int i;
-        for (i = 0; i < path1.size() && i < path2.size(); i++) {
-            if (!path1.get(i).equals(path2.get(i)))
-                break;
-        }
- 
-        return path1.get(i-1);
-    }
- 
-    private boolean findPath(Node root, int n, List<Integer> path)
-    {
-        if (root == null) {
-            return false;
-        }
- 
-        path.add(root.data);
- 
-        if (root.data == n) {
-            return true;
-        }
- 
-        if (root.left != null && findPath(root.left, n, path)) {
-            return true;
-        }
- 
-        if (root.right != null && findPath(root.right, n, path)) {
-            return true;
-        }
- 
-        path.remove(path.size()-1);
- 
-        return false;
-    }
-    
-    public static void main(String[] args){
-    	System.out.print("Test for new branch");
-    }
-
+public class LowComAnc{
+	public static void main (String[] args){
+		Graph G = new Graph(10);
+		G.addEdge(0,2,10);
+		G.addEdge(0,5,15);
+		G.addEdge(2,5,10);
+		G.addEdge(9,3,16);
+		
+		
+		System.out.println(G);;
+		System.out.println(G.isConnected(2,3));
+		System.out.println(G.isConnected(9,16));
+		
+	}
 }

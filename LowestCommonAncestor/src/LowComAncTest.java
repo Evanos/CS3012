@@ -55,7 +55,11 @@ public class LowComAncTest {
 	    assertEquals("[0]", test.LCA(1, 3).toString());
 	    assertEquals("[1]", test.LCA(1, 2).toString());
 	    assertEquals("[3, 0]", test.LCA(7, 9).toString());
-		
+	}
+	
+	@Test
+	public void TestLCANEGATICE(){
+		LowComAnc test = new LowComAnc(10);
 		
 		assertEquals(null, test.LCA(-1, 11));
         assertEquals(null, test.LCA(5, -1));

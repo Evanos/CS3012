@@ -31,8 +31,33 @@ public class LowComAncTest {
 		
 		test = new LowComAnc(2);
 		assertEquals("0, 1, ", test.toString());
-		
-
 	}
+	
+	@Test (expected=NegativeArraySizeException.class)
+	public void LowComAncTestNegative(){
+		LowComAnc test = new LowComAnc(-1);
+	}
+	
+	@Test
+	public void testLCA(){
+		LowComAnc test = new LowComAnc(10);
+		test.Edge(0, 1);   //       0
+						   //      / \
+		test.Edge(0, 3);   //     1   3
+		test.Edge(1, 2);   //      \ / \
+		test.Edge(3, 2);   //       2   5
+		test.Edge(3, 5);   //       |   |
+		test.Edge(5, 7);   //       9   7
+		test.Edge(2, 9);   //
 		
+		
+		assertEquals("[3, 0]", test.LCA(5, 2).toString());
+	    assertEquals("[0]", test.LCA(1, 3).toString());
+	    assertEquals("[1]", test.LCA(1, 2).toString());
+	    assertEquals("[3, 0]", test.LCA(7, 9).toString());
+		
+		
+		assertEquals(null, test.LCA(-1, 11));
+        assertEquals(null, test.LCA(5, -1));
+	}
 }
